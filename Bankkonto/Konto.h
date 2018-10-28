@@ -12,5 +12,6 @@ private:
 	int id;
 	int balance;
 	std::vector<int> history;
+	int i;
 };
 
