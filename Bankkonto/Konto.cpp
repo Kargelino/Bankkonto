@@ -11,6 +11,7 @@ Konto::~Konto()
 {
 }
 
+
 void Konto::deposit(int value)
 {
 	balance += value;

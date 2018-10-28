@@ -8,6 +8,7 @@ class Konto
 public:
 	Konto();
 	~Konto();
+	Konto(int id);
 	void deposit(int value);		//einzahlen
 	int getBalance();				// kontostand
 
@@ -18,7 +19,8 @@ protected:
 private:
 	int id;
 	int balance;
-	Konto(int id);	//Constructor 
+	//Konto(int id);	//Constructor 
+
 	std::vector <int> history;
 
 };

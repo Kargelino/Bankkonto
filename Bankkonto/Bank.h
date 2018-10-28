@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Konto.h"
+using namespace std;
 
 class Bank
 {
