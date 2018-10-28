@@ -1,17 +1,24 @@
-#include <vector>
-using namespace std;
-
 #pragma once
+#include <vector>
+#include "Bank.h"
+
+
 class Konto
 {
 public:
 	Konto();
 	~Konto();
+	void deposit(int value);		//einzahlen
+	int getBalance();				// kontostand
 
+	std::vector<int> getHistory();
+	int getId();
+protected:
+	void withdraw(int amount);		//abheben		
 private:
 	int id;
 	int balance;
-	std::vector<int> history;
-	int i;
-};
+	Konto(int id);	//Constructor 
+	std::vector <int> history;
 
+};
