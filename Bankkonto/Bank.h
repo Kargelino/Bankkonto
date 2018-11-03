@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
-#include "Konto.h"
+#include "pch.h"
+#include <iostream>
+#include "Konten.h"
 using namespace std;
 
 class Bank
@@ -11,16 +13,12 @@ public:
 	void showMenu();
 
 private:
-	std::vector <Konto*> acconts();
-	Konto* getAccont(int identnr);	//Konto finden
+	
+	vector <Konten*> acconts;
+	Konten* getAccont(int id);	//Konto finden
 	void addAccount();
-	void deleteAccount();
-	void manipulate(int id, int choiseManipulation, int value);
+	void deleteAccount(Konten* id);
+	void manipulate(Konten* ID, int choiseManipulation, int value);
 };
 
-
-
-Bank::Bank()
-{
-}
 

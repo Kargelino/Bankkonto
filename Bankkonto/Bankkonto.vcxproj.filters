@@ -18,10 +18,10 @@
     <ClInclude Include="pch.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Konto.h">
+    <ClInclude Include="Bank.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Bank.h">
+    <ClInclude Include="Konten.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,10 +32,10 @@
     <ClCompile Include="Bankkonto.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Konto.cpp">
+    <ClCompile Include="Bank.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Bank.cpp">
+    <ClCompile Include="Konten.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
