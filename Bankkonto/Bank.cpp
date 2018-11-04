@@ -18,16 +18,22 @@ void Bank::showMenu()
 	Konto* first;
 	#pragma endregion
 	
-	#pragma region Fix implementierte Konten
+#pragma region Fix implementierte Konten
+	strichLinie();
 	Konto* J = new Jugendkonto(123); //Fix implementierte Konten
 	Konto* K = new Kreditkonto(456);
 	this->addAccount(123, 123, J);
 	this->addAccount(456, 456, K);
-	#pragma endregion
-
+	cout << "Das sind fix implementierte Konten bei dieser Bank" << endl;
+#pragma endregion
+	strichLinie();
 	#pragma region String Für Wilkommenstext wird ausgegeben
 	while (true) {
-		std::cout << "\n\n\nWillkommen bei der Raika-Bank\nBitte geben Sie die 1 fuer ihre Kontonummereingabe, die 2 fuer andere Auftraege  oder 3 fuer Beenden ein:" << std::endl;
+		strichLinie();
+		std::cout << "\n\nWillkommen bei der Raikaka-Bank" << endl;
+		copyRight();
+		strichLinie();
+		std::cout<<"Bitte geben Sie die 1 fuer ihre Kontonummereingabe, die 2 fuer andere Auftraege  oder 3 fuer Beenden ein:" << std::endl;
 		start = einlesen(1,3);
 	#pragma endregion
 		switch (start)
@@ -59,40 +65,47 @@ void Bank::showMenu()
 							break;
 						}
 					#pragma endregion
-					case 2: {
-						std::cout << "Bitte geben Sie einen Betrag den Sie einzahlen wollen ein:" << std::endl;
-						value = einlesen();
-						this->manipulate(first, choiseAccountmanipulation, value);
-						std::cout << "Auftrag ausgefuert! Neuer Kontostand Euro:" << first->getBalance() << std::endl;
-						break;
-					}
-					case 3: {
-						first->getHistory();
-						break;
-					}
-					case 4: {
-						cout << "Bitte die Kontonr eingeben wo ueberwiesen werden soll:" << endl;
-						uebID = einlesen();
-						cout << "Bitte den zu ueberweisenden Betrag eingeben:" << endl;
-						value = einlesen();
-						Konto* Second = getAccont(uebID);	//
-						try {
-							if (Second == NULL) { 
-								throw "Kein Konto Vorhanden"; 
+					#pragma region Case 2
+						case 2: {
+							std::cout << "Bitte geben Sie einen Betrag den Sie einzahlen wollen ein:" << std::endl;
+							value = einlesen();
+							this->manipulate(first, choiseAccountmanipulation, value);
+							std::cout << "Auftrag ausgefuert! Neuer Kontostand Euro:" << first->getBalance() << std::endl;
+							break;
+						}
+					#pragma endregion
+					#pragma region Case 3
+						case 3: {
+							first->getHistory();
+							break;
+						}
+					#pragma endregion
+					#pragma region Case 4
+						case 4: {
+							cout << "Bitte die Kontonr eingeben wo ueberwiesen werden soll:" << endl;
+							uebID = einlesen();
+							cout << "Bitte den zu ueberweisenden Betrag eingeben:" << endl;
+							value = einlesen();
+							Konto* Second = getAccont(uebID);	//
+							try {
+								if (Second == NULL) {
+									throw "Kein Konto Vorhanden";
+								}
+								this->manipulate(first, 1, value);		//Eigenes Konto belasten
+								this->manipulate(Second, 2, value);		//Gewaehltes Konto hinzufuegen
 							}
-							this->manipulate(first, 1, value);		//Eigenes Konto belasten
-							this->manipulate(Second, 2, value);		//Gewaehltes Konto hinzufuegen
+							catch (const char* msg) {
+								cerr << "Ueberweisung Fehler: " << msg << endl;
+							}
+							break;
 						}
-						catch (const char* msg) {
-							cerr << "Ueberweisung Fehler: " <<msg << endl;
+					#pragma endregion
+					#pragma region Case 5
+						case 5: {
+							this->deleteAccount(first);
+							break;
 						}
-						break;
-					}
-					case 5: {
-						this->deleteAccount(first);
-						break;
-					}
-
+					#pragma endregion
 					default:
 						break;
 					}
@@ -160,7 +173,6 @@ Konto * Bank::getAccont(int id)
 
 void Bank::addAccount(int id, int pin,Konto* k)
 {
-												//immer new Konstruktor u(id) erzeugen 		
 	k->setPin(pin);								//seta Methode fuer Pin setzen
 	if (this->acconts.size() == 0) {			//Nur wenn Vektor accounts leer ist Konto hinzufuegen
 		this->acconts.push_back(k);
@@ -186,6 +198,7 @@ void Bank::addAccount(int id, int pin,Konto* k)
 		//}
 		//if (flag == true) {
 		//	this->acconts.push_back(k);
+		//	cout << "\nSie haben die Konto-ID: " << k->getId() << ", mit der PIN-Nummer: " << k->getPin() << endl;
 		//}	
  }
 
@@ -247,4 +260,28 @@ int Bank::einlesen(int k, int g)
 		else break;
 	}
 	return i;
+}
+
+void Bank::copyRight()
+{	//Ausgabe AUTOR mit (c) in "old C-Style"
+	int i;
+	printf(" ");
+	printf("\t\t\t\t\t\t\t\t\t\t\t%c", 0xDA);
+	for (i = 1; i <= 19; i++)
+		printf("%c", 0xC4);
+	printf("%c\n", 0xBF);
+	printf("\t\t\t\t\t\t\t\t\t\t\t%c \xB8 Benjamin Maxim  %c\n", 0xB3, 0xB3);
+	printf("\t\t\t\t\t\t\t\t\t\t\t%c", 0xC0);
+	for (i = 1; i <= 19; i++)
+		printf("%c", 0xC4);
+	printf("%c\n", 0xD9);
+	printf("\n");
+}
+
+void Bank::strichLinie()
+{
+	//Schleife fuer die Ausgabe einer kpl Strichlinie
+	for (int i = 0; i < 120; i++) {
+		cout << "_";
+	}
 }

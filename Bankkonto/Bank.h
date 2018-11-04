@@ -27,7 +27,9 @@ private:
 	void deleteAccount(Konto* id);
 	void manipulate(Konto* ID, int choiseManipulation, int value);
 	int einlesen();
-	int einlesen(int k,int g);
+	int einlesen(int k,int g);	//Fuer Fehler eingabe
+	void copyRight();
+	void strichLinie();
 };
 
 
