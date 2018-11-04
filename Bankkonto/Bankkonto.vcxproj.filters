@@ -21,7 +21,13 @@
     <ClInclude Include="Bank.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Konten.h">
+    <ClInclude Include="Konto.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Jugendkonto.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Kreditkonto.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +41,13 @@
     <ClCompile Include="Bank.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="Konten.cpp">
+    <ClCompile Include="Konto.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Jugendkonto.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Kreditkonto.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

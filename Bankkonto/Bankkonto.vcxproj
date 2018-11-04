@@ -152,13 +152,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bank.h" />
-    <ClInclude Include="Konten.h" />
+    <ClInclude Include="Jugendkonto.h" />
+    <ClInclude Include="Konto.h" />
+    <ClInclude Include="Kreditkonto.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bank.cpp" />
     <ClCompile Include="Bankkonto.cpp" />
-    <ClCompile Include="Konten.cpp" />
+    <ClCompile Include="Jugendkonto.cpp" />
+    <ClCompile Include="Konto.cpp" />
+    <ClCompile Include="Kreditkonto.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
