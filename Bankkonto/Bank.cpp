@@ -16,15 +16,23 @@ void Bank::showMenu()
 	#pragma region Variable erstellen
 	int start,wunschID, id, wunschPin,pin,  uebID,choiseAccountmanipulation = 0, value = 0, choiseAccountYoungorCredit = 0;
 	Konto* first;
+	DataService* storeData = new FileDataService;
 	#pragma endregion
 	
 #pragma region Fix implementierte Konten
 	strichLinie();
-	Konto* J = new Jugendkonto(123); //Fix implementierte Konten
-	Konto* K = new Kreditkonto(456);
-	this->addAccount(123, 123, J);
-	this->addAccount(456, 456, K);
-	cout << "Das sind fix implementierte Konten bei dieser Bank" << endl;
+	
+	try {
+		this->acconts = storeData->load();
+		Konto* J = new Jugendkonto(123); //Fix implementierte Konten
+		Konto* K = new Kreditkonto(456);
+		this->addAccount(123, 123, J);
+		this->addAccount(456, 456, K);
+		cout << "Das sind fix implementierte Konten bei dieser Bank" << endl;
+	}
+	catch (const char* Failure) {
+		cout << Failure << endl;
+	}
 #pragma endregion
 	strichLinie();
 	#pragma region String Für Wilkommenstext wird ausgegeben
@@ -76,7 +84,10 @@ void Bank::showMenu()
 					#pragma endregion
 					#pragma region Case 3
 						case 3: {
-							first->getHistory();
+							getHistory = first->getHistory();
+							for (int temp : getHistory) {
+								cout << temp << endl;
+							}
 							break;
 						}
 					#pragma endregion
@@ -126,6 +137,7 @@ void Bank::showMenu()
 						// Erbt von Konto ...
 						Konto* k = new Jugendkonto(wunschID);
 						this->addAccount(wunschID, wunschPin, k);
+
 					}
 					if (choiseAccountYoungorCredit == 2) {
 						// Erbt von Konto ...
@@ -146,6 +158,8 @@ void Bank::showMenu()
 			default:
 				break;
 		}
+		storeData->save(this->acconts);
+
 	}
 }
 

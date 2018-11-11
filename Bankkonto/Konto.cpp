@@ -36,11 +36,14 @@ int Konto::getPin()
 	return pin;
 }
 
-void Konto::getHistory()
+vector<int> Konto::getHistory()
 {
-	for (int temp : this->history) {
-		cout<<temp<<endl;	//mit temp  ausgeben
-	}
+	return this->history;
+}
+
+int Konto::getAccountType()
+{
+	return this->accountType;
 }
 
 void Konto::withdraw(int amount)
@@ -52,5 +55,10 @@ void Konto::withdraw(int amount)
 int Konto::getId()
 {
 	return this->id;
+}
+
+void Konto::setHistory(vector<int> temphistory)
+{
+	this->history = temphistory;
 }
 

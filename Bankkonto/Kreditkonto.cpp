@@ -5,7 +5,9 @@
 Kreditkonto::Kreditkonto(int id)
 {
 	this->id = id;
+	this->accountType = 2;		//Initialisierung mit 2 für Jugendkonto  im Konstruktor schon
 }
+
 
 Kreditkonto::~Kreditkonto()
 {

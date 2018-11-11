@@ -7,8 +7,8 @@
 #include "Kreditkonto.h"
 #include <string>
 #include <exception>
-
-
+#include "DataService.h" 
+#include "FileDataService.h"
 
 using namespace std;
 
@@ -21,6 +21,7 @@ public:
 
 private:
 	vector <Konto*> acconts;
+	vector <int> getHistory;
 	Konto* getAccont(int id, int pin);	//Konto finden
 	Konto* getAccont(int id);	//Fuer Uberweisungen soll ich keine Pin brauchen
 	void addAccount(int id, int pin,Konto* k);
@@ -29,7 +30,7 @@ private:
 	int einlesen();
 	int einlesen(int k,int g);	//Fuer Fehler eingabe
 	void copyRight();
-	void strichLinie();
+	void strichLinie(); 
 };
 
 

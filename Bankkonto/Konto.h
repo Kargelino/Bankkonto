@@ -16,12 +16,15 @@ public:
 	void setPin(int pin);
 	int getPin();
 	int getId();
-	void getHistory();
+	void setHistory(vector<int>temphistory);
+	vector<int> getHistory();
+	int getAccountType();
 	virtual void withdrawAccount(int amount)=0;		//abheben	
 protected:
 	void withdraw(int amount);		//abheben
 	Konto();					//Konstruktor 
 	int id;
+	int accountType;			//Für Kontounterscheidung 
 
 private:
 	int pin;

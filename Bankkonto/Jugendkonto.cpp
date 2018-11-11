@@ -6,6 +6,7 @@
 Jugendkonto::Jugendkonto(int id)
 {
 	this->id = id;
+	this->accountType = 1;		//Initialisierung mit 1 für Jugendkonto  im Konstruktor schon
 }
 
 Jugendkonto::~Jugendkonto()
