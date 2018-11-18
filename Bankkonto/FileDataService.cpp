@@ -9,22 +9,22 @@ FileDataService::FileDataService()
 
 FileDataService::~FileDataService()
 {
-}
-
+}//Methode zum Speicher der Vektoreintraege in Files
 void FileDataService::save(vector<Konto*> acconts)
 {
 	fstream file("Kontodaten.csv", ios::out); //File über den Konstuktor gleich mit open instantiert 	
 	for (Konto* temp : acconts) {
 		file << temp->getId() << ";" << temp->getPin()<<";" <<temp->getAccountType()<< ";";
-		for (int historyAccount : temp->getHistory()) {
+		for (int historyAccount : temp->getHistory()) {		//for each fuer den historyVektor
 			file << historyAccount << ",";
 		}
 		file <<":"<< temp->getBalance() << endl;
 	}
-	file.close();
+	file.close();	//Hier sollte ich mir file.close sparen, da ich uber den Konstructor (include fstream) das File oeffne
 
 }
 
+//Methode zum aktuallisiern der Vektoren nach Programm ende
 vector<Konto*> FileDataService::load()
 {
 	vector<Konto*> acconts;

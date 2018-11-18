@@ -23,6 +23,7 @@ void Bank::showMenu()
 	strichLinie();
 	
 	try {
+		//Hier werden die Vektoren aktuallisiert
 		this->acconts = storeData->load();
 		Konto* J = new Jugendkonto(123); //Fix implementierte Konten
 		Konto* K = new Kreditkonto(456);
@@ -158,6 +159,7 @@ void Bank::showMenu()
 			default:
 				break;
 		}
+		//Hier erfolgt ein Backup
 		storeData->save(this->acconts);
 
 	}
@@ -201,7 +203,7 @@ void Bank::addAccount(int id, int pin,Konto* k)
 		this->acconts.push_back(k);
 		cout << "\nSie haben die Konto-ID: " << k->getId() << ", mit der PIN-Nummer: " << k->getPin() << endl;	
 	}
-		//bool flag = true;
+		//bool flag = true;		//in C Style
 		//for (Konto* temp : this->acconts) {
 		//	if (temp->getId() == id) {	//Nur wenn dieses Konto nicht bereits existiret, Konto erzeugen
 		//		cout << "Dieses Konto existiert bereits und kann nicht doppelt existieren!" << endl;
@@ -281,12 +283,12 @@ void Bank::copyRight()
 	int i;
 	printf(" ");
 	printf("\t\t\t\t\t\t\t\t\t\t\t%c", 0xDA);
-	for (i = 1; i <= 19; i++)
+	for (i = 1; i <= 24; i++)
 		printf("%c", 0xC4);
 	printf("%c\n", 0xBF);
-	printf("\t\t\t\t\t\t\t\t\t\t\t%c \xB8 Benjamin Maxim  %c\n", 0xB3, 0xB3);
+	printf("\t\t\t\t\t\t\t\t\t\t\t%c \xB8  B Maxim u. M Kargl  %c\n", 0xB3, 0xB3);
 	printf("\t\t\t\t\t\t\t\t\t\t\t%c", 0xC0);
-	for (i = 1; i <= 19; i++)
+	for (i = 1; i <= 24; i++)
 		printf("%c", 0xC4);
 	printf("%c\n", 0xD9);
 	printf("\n");
